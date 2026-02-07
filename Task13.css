@@ -1,0 +1,82 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Scene */
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: radial-gradient(circle at top, #0f2027, #000);
+    font-family: 'Arial Black', Arial, sans-serif;
+}
+
+/* Camera */
+.scene {
+    perspective: 1200px;
+}
+
+/* Name container */
+.name {
+    display: flex;
+    transform-style: preserve-3d;
+}
+
+/* Letters */
+.name span {
+    font-size: 90px;
+    font-weight: bold;
+    color: #ffffff;
+    margin: 0 8px;
+
+    /* 3D depth illusion */
+    text-shadow:
+        1px 1px 0 #00e5ff,
+        2px 2px 0 #00bcd4,
+        3px 3px 0 #0097a7,
+        6px 6px 20px rgba(0,229,255,0.8);
+
+    transform-style: preserve-3d;
+    animation: popLetter 3s infinite ease-in-out;
+}
+
+/* Delay for wave effect */
+.name span:nth-child(1) { animation-delay: 0s; }
+.name span:nth-child(2) { animation-delay: 0.15s; }
+.name span:nth-child(3) { animation-delay: 0.3s; }
+.name span:nth-child(4) { animation-delay: 0.45s; }
+.name span:nth-child(5) { animation-delay: 0.6s; }
+
+/* Letter animation */
+@keyframes popLetter {
+    0% {
+        transform: scale(0.3)
+                   translateZ(-300px)
+                   rotateY(40deg);
+        opacity: 0;
+    }
+
+    40% {
+        transform: scale(1.2)
+                   translateZ(80px)
+                   rotateY(-10deg);
+        opacity: 1;
+    }
+
+    60% {
+        transform: scale(0.95)
+                   translateZ(40px)
+                   rotateY(0deg);
+    }
+
+    100% {
+        transform: scale(1)
+                   translateZ(0)
+                   rotateY(0deg);
+        opacity: 1;
+    }
+}

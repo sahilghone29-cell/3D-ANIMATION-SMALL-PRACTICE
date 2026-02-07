@@ -1,0 +1,84 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Scene */
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: radial-gradient(circle at top, #61c2da, #000);
+}
+
+/* Camera */
+.scene {
+    perspective: 1000px;
+}
+
+/* Door Frame */
+.frame {
+    position: relative;
+    width: 200px;
+    height: 320px;
+    background: #333;
+    padding: 10px;
+    box-shadow: 0 0 30px rgba(0,0,0,0.8);
+}
+
+/* Door */
+.door {
+    position: absolute;
+    width: 180px;
+    height: 300px;
+    background: linear-gradient(135deg, #412d25, #5d4037);
+    transform-origin: left center; /* hinge */
+    transform-style: preserve-3d;
+    animation: openClose 4s infinite ease-in-out;
+    box-shadow: inset 0 0 20px rgba(0,0,0,0.4);
+}
+
+/* Door thickness (3D illusion) */
+.door::after {
+    content: "";
+    position: absolute;
+    width: 12px;
+    height: 300px;
+    background: #3e2723;
+    right: -12px;
+    top: 0;
+    transform: rotateY(90deg);
+    transform-origin: left;
+}
+
+/* Handle */
+.handle {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    width: 14px;
+    height: 14px;
+    background: gold;
+    border-radius: 50%;
+    transform: translateY(-50%);
+    box-shadow: 0 0 8px rgba(255,215,0,0.8);
+}
+
+/* Door Animation */
+@keyframes openClose {
+    0% {
+        transform: rotateY(0deg);
+    }
+    40% {
+        transform: rotateY(-75deg);
+    }
+    60% {
+        transform: rotateY(-75deg);
+    }
+    100% {
+        transform: rotateY(0deg);
+    }
+}

@@ -1,0 +1,125 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Background */
+body {
+    height: 100vh;
+    background: linear-gradient(#87ceeb 60%, #c8e6c9);
+    overflow: hidden;
+}
+
+/* ROAD – full width */
+.road {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 140px;
+    background: #2f2f2f;
+    overflow: hidden;
+}
+
+/* Lane markings */
+.lane {
+    position: absolute;
+    top: 65px;
+    width: 200%;
+    height: 6px;
+    background: repeating-linear-gradient(
+        to right,
+        #fff 0 40px,
+        transparent 40px 80px
+    );
+    animation: moveRoad 1s linear infinite;
+}
+
+/* CAR */
+.car {
+    position: absolute;
+    bottom: 35px;   /* sits on road */
+    left: -250px;
+    animation: drive 6s linear infinite;
+}
+
+/* Car top */
+.top {
+    position: absolute;
+    left: 45px;
+    width: 120px;
+    height: 40px;
+    background: #b71c1c;
+    border-radius: 12px 12px 4px 4px;
+}
+
+/* Car body */
+.body {
+    width: 210px;
+    height: 60px;
+    background: #d32f2f;
+    border-radius: 12px;
+    margin-top: 30px;
+}
+
+/* Lights */
+.headlight {
+    position: absolute;
+    right: -6px;
+    top: 50px;
+    width: 10px;
+    height: 18px;
+    background: #fff176;
+    border-radius: 4px;
+}
+
+.taillight {
+    position: absolute;
+    left: -6px;
+    top: 50px;
+    width: 10px;
+    height: 18px;
+    background: #ff5252;
+    border-radius: 4px;
+}
+
+/* Wheels */
+.wheel {
+    position: absolute;
+    bottom: -22px;
+    width: 44px;
+    height: 44px;
+    background: #111;
+    border-radius: 50%;
+    border: 5px solid #555;
+    animation: spin 0.8s linear infinite;
+}
+
+.wheel.front {
+    right: 30px;
+}
+
+.wheel.back {
+    left: 30px;
+}
+
+/* Animations */
+@keyframes drive {
+    0% {
+        transform: translateX(-250px);
+    }
+    100% {
+        transform: translateX(120vw);
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+

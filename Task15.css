@@ -1,0 +1,116 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Scene */
+body {
+    height: 100vh;
+    background: linear-gradient(#5c9516 60%, #94f997);
+    overflow: hidden;
+}
+
+/* Scene container */
+.scene {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+/* Path / Ground */
+.path {
+    position: absolute;
+    bottom: 60px;
+    width: 100%;
+    height: 8px;
+    background: #444;
+}
+
+/* Robot (moves forward) */
+.robot {
+    position: absolute;
+    bottom: 68px;
+    left: -120px;
+    animation: walkForward 6s linear infinite;
+}
+
+/* Head */
+.head {
+    width: 40px;
+    height: 40px;
+    background: #b0bec5;
+    margin: 0 auto 6px;
+}
+
+/* Body */
+.body {
+    width: 60px;
+    height: 70px;
+    background: #90a4ae;
+    margin: 0 auto;
+}
+
+/* Arms */
+.arm {
+    position: absolute;
+    top: 50px;
+    width: 12px;
+    height: 50px;
+    background: #78909c;
+    transform-origin: top center;
+}
+
+.left-arm {
+    left: -14px;
+    animation: armSwing 1s infinite ease-in-out;
+}
+
+.right-arm {
+    right: -14px;
+    animation: armSwing 1s infinite ease-in-out reverse;
+}
+
+/* Legs */
+.leg {
+    position: absolute;
+    top: 120px;
+    width: 14px;
+    height: 60px;
+    background: #607d8b;
+    transform-origin: top center;
+}
+
+.left-leg {
+    left: 10px;
+    animation: legWalk 1s infinite ease-in-out;
+}
+
+.right-leg {
+    right: 10px;
+    animation: legWalk 1s infinite ease-in-out reverse;
+}
+
+/* Walk cycle */
+@keyframes legWalk {
+    0%   { transform: rotate(25deg); }
+    50%  { transform: rotate(-25deg); }
+    100% { transform: rotate(25deg); }
+}
+
+@keyframes armSwing {
+    0%   { transform: rotate(-20deg); }
+    50%  { transform: rotate(20deg); }
+    100% { transform: rotate(-20deg); }
+}
+
+/* Forward movement */
+@keyframes walkForward {
+    0% {
+        transform: translateX(-120px);
+    }
+    100% {
+        transform: translateX(110vw);
+    }
+}

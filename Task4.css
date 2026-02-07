@@ -1,0 +1,51 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Scene */
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: radial-gradient(circle at top, #111, #000);
+    font-family: 'Arial Black', Arial, sans-serif;
+}
+
+.scene {
+    perspective: 1000px;
+}
+
+/* Logo Text */
+.logo {
+    font-size: 80px;
+    font-weight: bold;
+    color: #fff;
+    letter-spacing: 8px;
+    transform-style: preserve-3d;
+
+    /* 3D depth effect */
+    text-shadow:
+        1px 1px 0 #ff5252,
+        2px 2px 0 #ff1744,
+        3px 3px 0 #d50000,
+        4px 4px 10px rgba(0,0,0,0.6);
+
+    animation: spin3D 4s infinite linear;
+}
+
+/* 3D Spin Animation */
+@keyframes spin3D {
+    0% {
+        transform: rotateY(0deg) rotateX(0deg);
+    }
+    50% {
+        transform: rotateY(180deg) rotateX(20deg);
+    }
+    100% {
+        transform: rotateY(360deg) rotateX(0deg);
+    }
+}

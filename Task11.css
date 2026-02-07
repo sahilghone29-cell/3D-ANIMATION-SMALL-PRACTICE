@@ -1,0 +1,105 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Scene */
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: radial-gradient(circle at top, #e6dd28, #000);
+}
+
+/* Camera */
+.scene {
+    perspective: 900px;
+}
+
+/* Box */
+.box {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    border: 6px solid #555;
+    background: linear-gradient(#111, #000);
+    overflow: hidden;
+    transform: rotateX(10deg);
+}
+
+/* Ball */
+.ball {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background: radial-gradient(circle at 30% 30%, #f2f1ea, #f57f17);
+    border-radius: 50%;
+
+    animation:
+        moveX 4s infinite linear,
+        moveY 2s infinite ease-in-out,
+        squash 2s infinite;
+}
+
+/* Shadow */
+.shadow {
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    width: 40px;
+    height: 12px;
+    background: rgba(0,0,0,0.7);
+    border-radius: 50%;
+    filter: blur(6px);
+    animation: shadowMove 2s infinite ease-in-out;
+}
+
+/* Horizontal bounce */
+@keyframes moveX {
+    0%   { left: 0; }
+    50%  { left: 260px; }
+    100% { left: 0; }
+}
+
+/* Vertical bounce (gravity feel) */
+@keyframes moveY {
+    0%   { top: 0; }
+    50%  { top: 260px; }
+    100% { top: 0; }
+}
+
+/* Squash & stretch */
+@keyframes squash {
+    0%, 100% {
+        transform: scale(1,1);
+    }
+
+    45% {
+        transform: scale(1.2,0.8);
+    }
+
+    50% {
+        transform: scale(0.9,1.1);
+    }
+}
+
+/* Shadow reacts to height */
+@keyframes shadowMove {
+    0% {
+        transform: translateX(0) scale(0.5);
+        opacity: 0.2;
+    }
+
+    50% {
+        transform: translateX(260px) scale(1.2);
+        opacity: 0.6;
+    }
+
+    100% {
+        transform: translateX(0) scale(0.5);
+        opacity: 0.2;
+    }
+}

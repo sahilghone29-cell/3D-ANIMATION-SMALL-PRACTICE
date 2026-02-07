@@ -1,0 +1,90 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Scene */
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: radial-gradient(circle at center, #000, #020024);
+    font-family: Arial, sans-serif;
+}
+
+/* Camera */
+.scene {
+    position: relative;
+    width: 400px;
+    height: 400px;
+    perspective: 1000px;
+}
+
+/* Sun */
+.sun {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 80px;
+    height: 80px;
+    background: radial-gradient(circle, #ffeb3b, #ff9800, #f57c00);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 40px 20px rgba(255,165,0,0.8);
+}
+
+/* Orbit path */
+.orbit {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border: 1px dashed rgba(255,255,255,0.2);
+    border-radius: 50%;
+    transform-style: preserve-3d;
+}
+
+/* Different orbit sizes */
+.orbit1 { width: 140px; height: 140px; animation: spin 4s linear infinite; }
+.orbit2 { width: 220px; height: 220px; animation: spin 7s linear infinite; }
+.orbit3 { width: 300px; height: 300px; animation: spin 10s linear infinite; }
+
+/* Planet */
+.planet {
+    position: absolute;
+    top: 50%;
+    right: -12px;
+    transform: translateY(-50%);
+    border-radius: 50%;
+}
+
+/* Individual planets */
+.mercury {
+    width: 12px;
+    height: 12px;
+    background: gray;
+}
+
+.earth {
+    width: 18px;
+    height: 18px;
+    background: radial-gradient(circle, #4fc3f7, #01579b);
+}
+
+.mars {
+    width: 16px;
+    height: 16px;
+    background: radial-gradient(circle, #ff7043, #bf360c);
+}
+
+/* Orbit animation */
+@keyframes spin {
+    0% {
+        transform: translate(-50%, -50%) rotateX(60deg) rotateZ(0deg);
+    }
+    100% {
+        transform: translate(-50%, -50%) rotateX(60deg) rotateZ(360deg);
+    }
+}

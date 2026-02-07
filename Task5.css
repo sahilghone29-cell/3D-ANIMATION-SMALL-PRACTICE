@@ -1,0 +1,79 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Scene (Camera) */
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: radial-gradient(circle at top, #111, #000);
+    overflow: hidden;
+}
+
+.scene {
+    width: 450px;
+    height: 300px;
+    perspective: 1100px;
+}
+
+/* World = environment */
+.world {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    animation: cameraMove 8s linear infinite;
+}
+
+/* Camera motion */
+@keyframes cameraMove {
+    0% {
+        transform: rotateX(12deg) rotateY(-8deg) translateZ(0);
+    }
+    100% {
+        transform: rotateX(12deg) rotateY(-8deg) translateZ(900px);
+    }
+}
+
+/* Cube base */
+.cube {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    transform-style: preserve-3d;
+    animation: depthFade 8s linear infinite;
+}
+
+/* Cube positions (parallax) */
+.c1 { top: 50px; left: 60px; transform: translateZ(-200px); }
+.c2 { top: 160px; left: 260px; transform: translateZ(-450px); animation-delay: -2s; }
+.c3 { top: 40px; left: 320px; transform: translateZ(-700px); animation-delay: -4s; }
+
+/* Cube faces */
+.f {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(#4fc3f7, #01579b);
+    opacity: 0.95;
+}
+
+/* Lighting illusion */
+.front  { transform: translateZ(40px); }
+.back   { transform: rotateY(180deg) translateZ(40px); background: #013; }
+.right  { transform: rotateY(90deg) translateZ(40px); background: #0288d1; }
+.left   { transform: rotateY(-90deg) translateZ(40px); background: #01579b; }
+.top    { transform: rotateX(90deg) translateZ(40px); background: #81d4fa; }
+.bottom { transform: rotateX(-90deg) translateZ(40px); background: #014; }
+
+/* Fog + depth realism */
+@keyframes depthFade {
+    0%   { opacity: 0.15; transform: scale(0.6); }
+    50%  { opacity: 1;    transform: scale(1); }
+    100% { opacity: 0.15; transform: scale(0.6); }
+}

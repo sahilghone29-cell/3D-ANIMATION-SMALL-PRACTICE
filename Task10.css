@@ -1,0 +1,125 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Scene */
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: radial-gradient(circle at top, #0b58e7, #000);
+}
+
+/* Camera */
+.scene {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    perspective: 900px;
+}
+
+/* Ground */
+.ground {
+    position: absolute;
+    bottom: 40px;
+    width: 100%;
+    height: 10px;
+    background: #333;
+}
+
+/* Cube */
+.cube {
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #4fc3f7, #01579b);
+    transform: translateX(-50%);
+    transform-style: preserve-3d;
+    animation: jump 2.2s infinite;
+}
+
+/* Shadow */
+.shadow {
+    position: absolute;
+    bottom: 45px;
+    left: 50%;
+    width: 70px;
+    height: 20px;
+    background: rgba(0,0,0,0.7);
+    border-radius: 50%;
+    filter: blur(10px);
+    transform: translateX(-50%);
+    animation: shadowJump 2.2s infinite;
+}
+
+/* Jump animation (TIMING & SPACING) */
+@keyframes jump {
+    /* Squash before jump */
+    0% {
+        transform: translateX(-50%) scale(1.2, 0.8);
+    }
+
+    /* Takeoff */
+    15% {
+        transform: translateX(-50%) scale(0.9, 1.1);
+    }
+
+    /* Rising (slow spacing) */
+    40% {
+        transform: translateX(-50%) translateY(-140px) scale(1, 1);
+    }
+
+    /* Peak (hang time) */
+    50% {
+        transform: translateX(-50%) translateY(-160px) scale(1, 1);
+    }
+
+    /* Falling (fast spacing) */
+    70% {
+        transform: translateX(-50%) translateY(0) scale(1.1, 0.9);
+    }
+
+    /* Landing squash */
+    85% {
+        transform: translateX(-50%) scale(1.25, 0.75);
+    }
+
+    /* Settle */
+    100% {
+        transform: translateX(-50%) scale(1, 1);
+    }
+}
+
+/* Shadow animation */
+@keyframes shadowJump {
+    0% {
+        transform: translateX(-50%) scale(1.3);
+        opacity: 0.6;
+    }
+
+    40% {
+        transform: translateX(-50%) scale(0.5);
+        opacity: 0.2;
+    }
+
+    50% {
+        transform: translateX(-50%) scale(0.4);
+        opacity: 0.15;
+    }
+
+    70% {
+        transform: translateX(-50%) scale(1);
+        opacity: 0.5;
+    }
+
+    100% {
+        transform: translateX(-50%) scale(1.3);
+        opacity: 0.6;
+    }
+}

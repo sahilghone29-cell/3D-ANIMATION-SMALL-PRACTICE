@@ -1,0 +1,93 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Scene */
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: radial-gradient(circle at top, #1a1a1a, #000);
+}
+
+/* Camera */
+.scene {
+    position: relative;
+    width: 500px;
+    height: 260px;
+    perspective: 1000px;
+}
+
+/* Floor */
+.floor {
+    position: absolute;
+    bottom: 50px;
+    width: 100%;
+    height: 10px;
+    background: linear-gradient(#444, #222);
+}
+
+/* Domino piece */
+.domino {
+    position: absolute;
+    bottom: 60px;
+    width: 26px;
+    height: 90px;
+    background: linear-gradient(135deg, #fafafa, #bdbdbd);
+    transform-origin: bottom center;
+    transform-style: preserve-3d;
+
+    /* Realistic physics feel */
+    animation: fall 4s infinite cubic-bezier(.6,.05,.3,1);
+
+    box-shadow:
+        0 12px 20px rgba(0,0,0,0.6);
+}
+
+/* Domino thickness (side face) */
+.domino::after {
+    content: "";
+    position: absolute;
+    width: 10px;
+    height: 90px;
+    background: #9e9e9e;
+    right: -10px;
+    top: 0;
+    transform: rotateY(90deg);
+    transform-origin: left;
+}
+
+/* Domino placement (real spacing) */
+.d1 { left: 60px;  animation-delay: 0s; }
+.d2 { left: 120px; animation-delay: 0.4s; }
+.d3 { left: 180px; animation-delay: 0.8s; }
+.d4 { left: 240px; animation-delay: 1.2s; }
+.d5 { left: 300px; animation-delay: 1.6s; }
+.d6 { left: 360px; animation-delay: 2s; }
+
+/* Falling motion (realistic domino physics) */
+@keyframes fall {
+    0% {
+        transform: rotateX(0deg);
+    }
+
+    25% {
+        transform: rotateX(-40deg);
+    }
+
+    45% {
+        transform: rotateX(-70deg);
+    }
+
+    60% {
+        transform: rotateX(-90deg);
+    }
+
+    100% {
+        transform: rotateX(-90deg);
+    }
+}

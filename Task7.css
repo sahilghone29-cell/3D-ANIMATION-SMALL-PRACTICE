@@ -1,0 +1,75 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Scene */
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: radial-gradient(circle at top, #222, #000);
+}
+
+/* Camera */
+.scene {
+    position: relative;
+    width: 420px;
+    height: 300px;
+    perspective: 900px;
+}
+
+/* Ramp (Inclined Plane) */
+.ramp {
+    position: absolute;
+    bottom: 80px;
+    left: 40px;
+    width: 320px;
+    height: 16px;
+    background: linear-gradient(#999, #555);
+    transform: rotate(-20deg);
+    transform-origin: left center;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.6);
+}
+
+/* Ball path ROTATED to match ramp angle */
+.ball-path {
+    position: absolute;
+    bottom: 96px;          /* sits ON the ramp */
+    left: 40px;
+    transform-origin: left center;
+    transform: rotate(-20deg);
+    animation: moveDown 3s infinite ease-in;
+}
+
+/* Ball */
+.ball {
+    width: 50px;
+    height: 50px;
+    background: radial-gradient(circle at 30% 30%, #ffeb3b, #f57f17);
+    border-radius: 50%;
+    animation: roll 3s infinite linear;
+}
+
+/* Move along ramp direction */
+@keyframes moveDown {
+    0% {
+        transform: rotate(-20deg) translateX(0);
+    }
+    100% {
+        transform: rotate(-20deg) translateX(260px);
+    }
+}
+
+/* Rolling rotation */
+@keyframes roll {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(720deg);
+    }
+}

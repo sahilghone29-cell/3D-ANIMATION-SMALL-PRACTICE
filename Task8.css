@@ -1,0 +1,61 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Scene */
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: radial-gradient(circle at top, #38c512, #000);
+    font-family: Arial, sans-serif;
+}
+
+/* Camera */
+.scene {
+    perspective: 1000px;
+}
+
+/* Text */
+.text {
+    font-size: 90px;
+    font-weight: bold;
+    color: #fff;
+    letter-spacing: 6px;
+
+    /* 3D depth illusion */
+    text-shadow:
+        1px 1px 0 #ff5252,
+        2px 2px 0 #ff1744,
+        3px 3px 0 #d50000,
+        6px 6px 15px rgba(0,0,0,0.7);
+
+    transform-style: preserve-3d;
+    animation: popup 2.5s infinite ease-in-out;
+}
+
+/* Pop-up animation */
+@keyframes popup {
+    0% {
+        transform: scale(0.4) translateZ(-200px);
+        opacity: 0;
+    }
+
+    50% {
+        transform: scale(1.1) translateZ(40px);
+        opacity: 1;
+    }
+
+    70% {
+        transform: scale(0.95) translateZ(20px);
+    }
+
+    100% {
+        transform: scale(1) translateZ(0);
+        opacity: 1;
+    }
+}

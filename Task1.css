@@ -1,0 +1,120 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Scene */
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: radial-gradient(circle at top, #222, #000);
+}
+
+.scene {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    perspective: 900px;
+}
+
+/* Ground */
+.ground {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 20px;
+    background: linear-gradient(#555, #222);
+    transform: rotateX(75deg);
+    transform-origin: bottom;
+}
+
+/* Ball */
+.ball {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    width: 60px;
+    height: 60px;
+    background: radial-gradient(circle at 30% 30%, #ffeb3b, #f57f17);
+    border-radius: 50%;
+    transform: translateX(-50%);
+    animation: bounce 1.6s infinite cubic-bezier(.5, 0, .5, 1);
+}
+
+/* Shadow */
+.shadow {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    width: 80px;
+    height: 20px;
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 50%;
+    transform: translateX(-50%);
+    filter: blur(8px);
+    animation: shadow 1.6s infinite;
+}
+
+/* Bounce Animation (Gravity + Squash & Stretch) */
+@keyframes bounce {
+    0% {
+        transform: translateX(-50%) translateY(0) scale(1.2, 0.8);
+    }
+
+    20% {
+        transform: translateX(-50%) translateY(-200px) scale(0.9, 1.1);
+    }
+
+    40% {
+        transform: translateX(-50%) translateY(0) scale(1.25, 0.75);
+    }
+
+    60% {
+        transform: translateX(-50%) translateY(-120px) scale(0.95, 1.05);
+    }
+
+    80% {
+        transform: translateX(-50%) translateY(0) scale(1.15, 0.85);
+    }
+
+    100% {
+        transform: translateX(-50%) translateY(0) scale(1.2, 0.8);
+    }
+}
+
+/* Shadow Animation */
+@keyframes shadow {
+    0% {
+        transform: translateX(-50%) scale(1.2);
+        opacity: 0.6;
+    }
+
+    20% {
+        transform: translateX(-50%) scale(0.5);
+        opacity: 0.2;
+    }
+
+    40% {
+        transform: translateX(-50%) scale(1.3);
+        opacity: 0.65;
+    }
+
+    60% {
+        transform: translateX(-50%) scale(0.7);
+        opacity: 0.3;
+    }
+
+    80% {
+        transform: translateX(-50%) scale(1.1);
+        opacity: 0.5;
+    }
+
+    100% {
+        transform: translateX(-50%) scale(1.2);
+        opacity: 0.6;
+    }
+}
